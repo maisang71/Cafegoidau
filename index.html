@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Gội Đầu Phúc Xuyên</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #6F4E37; /* Màu Cafe */
+            --secondary-color: #8FBC8F; /* Màu thảo dược/Xanh nhẹ */
+            --accent-color: #D2B48C; /* Màu nâu nhạt */
+            --bg-color: #F9F6F0; /* Nền kem sáng */
+            --card-bg: #FFFFFF;
+            --text-main: #2C221E;
+            --text-muted: #7A706D;
+            --shadow: 0 10px 30px rgba(111, 78, 55, 0.08);
+            --radius: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        /* Header / Navbar */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 20px 40px;
+            background: linear-gradient(135deg, #F3E9DC 0%, #E8DFD1 100%);
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            text-align: center;
+        }
+
+        .hero-content max-width {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(111, 78, 55, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* Container chung */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Grid Services & Menu */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media(min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Booking Form Section */
+        .booking-section {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #E0D0C0;
+            border-radius: 12px;
+            background: #FAFAFA;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            background: #fff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid #EAE0D5;
+            margin-top: 40px;
+        }
+
+        /* Bottom Nav Mobile */
+        .mobile-nav {
+            display: flex;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            justify-content: space-around;
+            padding: 12px 0;
+            z-index: 1000;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.75rem;
+            gap: 4px;
+        }
+
+        .mobile-nav a i {
+            font-size: 1.2rem;
+        }
+
+        .mobile-nav a.active, .mobile-nav a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-mug-hot"></i> Phúc Xuyên
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Dịch vụ</a></li>
+                <li><a href="#menu">Menu Cafe</a></li>
+                <li><a href="#booking">Đặt lịch</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Cafe & Gội Đầu Phúc Xuyên</h1>
+            <p>Không gian thư giãn đỉnh cao: Thưởng thức hương vị cafe đậm đà kết hợp dịch vụ gội đầu dưỡng sinh thảo dược.</p>
+            <a href="#booking" class="btn">Đặt Lịch Ngay</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <div class="container" id="services">
+        <div class="section-title">
+            <h2>Dịch Vụ Gội Đầu</h2>
+            <p>Chăm sóc sức khỏe mái tóc và tinh thần của bạn</p>
+        </div>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-spa"></i></div>
+                <h3>Gội Đầu Thảo Dược Cơ Bản</h3>
+                <p>Làm sạch da đầu, massage bấm huyệt giảm căng thẳng với các nguyên liệu thiên nhiên.</p>
+                <div class="price">69.000đ</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                <h3>Gội Đầu Dưỡng Sinh Chuyên Sâu</h3>
+                <p>Kết hợp massage cổ vai gáy, xông tinh dầu, bấm huyệt đả thông kinh lạc.</p>
+                <div class="price">129.000đ</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cafe Menu Section -->
+    <div class="container" id="menu">
+        <div class="section-title">
+            <h2>Menu Cafe & Đồ Uống</h2>
+            <p>Pha chế tinh tế từ những hạt cafe nguyên chất</p>
+        </div>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+                <h3>Cafe Đen / Sữa Đá</h3>
+                <p>Hương vị truyền thống đậm đà, tỉnh táo năng lượng cho cả ngày dài.</p>
+                <div class="price">25.000đ</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-glass-water"></i></div>
+                <h3>Trà Thảo Mộc Thanh Nhiệt</h3>
+                <p>Thức uống thanh mát đi kèm hoàn hảo sau liệu trình gội đầu thư giãn.</p>
+                <div class="price">35.000đ</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Section -->
+    <div class="container" id="booking">
+        <div class="booking-section">
+            <div class="section-title" style="margin-bottom: 20px;">
+                <h2>Đặt Lịch Trực Tuyến</h2>
+                <p>Điền thông tin để Phúc Xuyên chuẩn bị đón tiếp bạn chu đáo nhất</p>
+            </div>
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Họ và tên</label>
+                    <input type="text" class="form-control" placeholder="Nhập tên của bạn" required>
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input type="tel" class="form-control" placeholder="Nhập số điện thoại" required>
+                </div>
+                <div class="form-group">
+                    <label>Dịch vụ lựa chọn</label>
+                    <select class="form-control">
+                        <option>Gội Đầu Thảo Dược Cơ Bản</option>
+                        <option>Gội Đầu Dưỡng Sinh Chuyên Sâu</option>
+                        <option>Combo Cafe + Gội Đầu</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Xác Nhận Đặt Lịch</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Cafe Gội Đầu Phúc Xuyên. All rights reserved.</p>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-nav">
+        <a href="#" class="active"><i class="fa-solid fa-house"></i>Trang chủ</a>
+        <a href="#services"><i class="fa-solid fa-spa"></i>Dịch vụ</a>
+        <a href="#menu"><i class="fa-solid fa-mug-hot"></i>Menu</a>
+        <a href="#booking"><i class="fa-solid fa-calendar-check"></i>Đặt lịch</a>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Cảm ơn bạn đã đặt lịch tại Phúc Xuyên! Chúng tôi sẽ liên hệ lại sớm nhất để xác nhận.');
+        }
+    </script>
+</body>
+</html>
