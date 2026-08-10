@@ -1,20 +1,15 @@
 name: Deploy Cafe Phuc Xuyen to GitHub Pages
 
 on:
-  # Tự động chạy khi có lệnh push lên nhánh chính (main hoặc master)
   push:
-    branches: ["main"]
-
-  # Cho phép kích hoạt thủ công từ tab Actions trên GitHub
+    branches: [ "main", "master" ]
   workflow_dispatch:
 
-# Phân quyền cho token để có thể đọc repository và ghi nội dung lên GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Chỉ cho phép một tiến trình deploy chạy tại một thời điểm để tránh xung đột
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -26,16 +21,15 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Thư mục chứa mã nguồn website (vì dùng file index.html ở gốc nên chọn thư mục hiện tại)
           path: '.'
 
       - name: Deploy to GitHub Pages
